@@ -4,10 +4,11 @@
 		<title>Fake Car</title>
 		<meta content="utf-8">
 		<link rel="stylesheet" href="styles.css">
-		<script src="car.js"></script>
+		<script src="car1.js"></script>
 	</head>
-	<body onload="draw()">
-		<h1>OoOOooh Fancy Car!</h1>
+	<body onload="run()">
+        <canvas id="myCanvas" width="800" height ="587" style="border:1px solid #d3d3d3;"></canvas>
+        <h1>OoOOooh Fancy Car!</h1>
         <form oninput="x.value=parseInt(a.value)">
         Slower 
         <input type="range" name="a" value="50" />
