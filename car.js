@@ -76,7 +76,7 @@ function drawCar(){
 	var body = document.body;
 	var canvas = add(create("canvas", "width", 800, "height", 587));
 	var c = canvas.getContext("2d");
-	
+renderCar() {	
 	c.strokeRect(0, 0, 800, 500);
 	
 	//Top
@@ -294,4 +294,5 @@ function drawCar(){
 		281, 474,
 		296, 464
 	);
+}
 }
