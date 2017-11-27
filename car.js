@@ -76,11 +76,11 @@ function drawCar(){
 	var body = document.body;
 	var canvas = add(create("canvas", "width", 800, "height", 587));
 	var c = canvas.getContext("2d");
-renderCar() {	
+	
 	c.strokeRect(0, 0, 800, 500);
 	
 	//Top
-	
+	function drawVehicle(){
 	drawPoly(colors[0],
 		492, 4,
 		682, 78,
@@ -294,5 +294,73 @@ renderCar() {
 		281, 474,
 		296, 464
 	);
-}
+    }
+//    var canvas = document.getElementById("myCanvas");
+//        var c = canvas.getc("2d");     
+        var counter = 0;
+        var circles = [];
+        
+        //Creates Circle object constructor
+        function Circle() {
+            this.x = 500;
+            this.y = 500;
+            this.radius = 7;
+            this.opacity = 1;
+            this.rotation = toRadians(Math.random());
+        }
+        //Updates new location, size and opacity  of circle object
+        Circle.prototype.update = function() {
+            this.x++
+            if(this.opacity < 0){
+                this.opacity = 0;
+            }
+            if(this.opacity > 0) {
+                this.opacity -= 0.005;
+                }
+
+            this.radius += .10;
+            this.y = this.y + (.2 * Math.cos(this.rotation) - 1);
+            c.globalAlpha = this.opacity;
+            c.beginPath();
+            c.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+            c.closePath();
+            
+            c.fillStyle = "grey";
+            c.fill();
+        }
+        
+        //Converts degrees to radians
+        function toRadians (angle) {
+            return  angle * (Math.PI * 180);
+        }        
+        
+        //Draws all circles on canvas
+        function drawCircles() {
+                var circle1 = new Circle();
+            circles.push(circle1);
+            }
+            draw();
+        
+        //Calls draw methos and clears canvas before every frame. Also controls framerate.
+        function draw() {
+            counter++;
+            c.clearRect(0, 0, canvas.width, canvas.height);
+            drawVehicle();
+            if(this.counter % 1.25 == 0){
+            drawCircles();
+            }
+            for(var i = 0; i < circles.length; i++) {
+                
+                var newCircle = circles[i] ;
+                newCircle.update();
+            }
+        
+        requestAnimationFrame(draw);
+        }
+        
+        c.fillStyle = "GREY";
+        c.fill();
+
+    
+    
 }
